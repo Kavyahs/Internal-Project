@@ -29,13 +29,13 @@ gem 'spring',        group: :development
 gem 'pg'
 gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0'
-  gem "factory_girl_rails"
-  gem 'pry'
-  gem 'pry-doc'
-  gem 'pry-rails'
-  gem "quiet_assets"
-  gem "shoulda"
+	gem 'rspec-rails', '~> 3.0'
+	gem "factory_girl_rails"
+	gem 'pry'
+	gem 'pry-doc'
+	gem 'pry-rails'
+	gem "quiet_assets"
+	gem "shoulda"
 end
 gem 'jquery-validation-rails'
 # Use ActiveModel has_secure_password
