@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Interactive</title>
+	<title>Internal Project</title>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
 </head>
 <body class="landing-page-bg">
+
 	<%= render partial: 'layouts/common/header'  %>
 
 	<%= yield %>
+
 	<div id="popup_modal" class="modal fade"></div>
 
-</div>
 </body>
 </html>
