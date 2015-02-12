@@ -24,7 +24,7 @@ test:
   adapter: postgresql
   encoding: unicode
   reconnect: false
-  database: internal_test_<%= ENV['TEST_ENV_NUMBER'] %>
+  database: internal_test
   pool: 5
   username: postgres
   password: athukuthubale8
