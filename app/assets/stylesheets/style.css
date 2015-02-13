@@ -41,3 +41,8 @@ ul li span.profile-name {
 .event-panels .participants .status {
     float: right;
 }
+.landig_page{
+  margin-top: 200px;
+  text-align: center;
+  color: yellow;
+}

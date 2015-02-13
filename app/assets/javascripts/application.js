@@ -17,4 +17,5 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require sign_up
+//= require sign_in
 //= require_tree .

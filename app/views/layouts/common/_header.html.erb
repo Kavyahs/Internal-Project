@@ -11,16 +11,25 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+        <li>
+          <img src="/assets/Profile-Pic.jpg" alt="Profile picture" class="img-rounded profile-pic">
+          <span class="profile-name"><%= current_user.name.titleize %></span>
+        </li>
+        <li>
+          <!-- Sign Out Button trigger modal -->
+          <%= button_to "Sign Out", session_path(:id => current_user ), :method=> :delete, :class=>"btn btn-success signup-login-btn" %>
+        </li>
+        <% else %>
         <li>
           <!-- Sign up Button trigger modal -->
           <%= button_to "Sign up", new_user_path, :method=> :get, :remote =>true, :class=>"btn btn-success signup-login-btn", 'data-toggle' => 'modal', 'data-target'=>'#signUp'%>
         </li>
         <li>
           <!-- Log in Button trigger modal -->
-          <button type="button" class="btn btn-success signup-login-btn" data-toggle="modal" data-target="#logIn">
-            Sign in
-          </button>
+          <%= button_to "Sign in", new_session_path, :method=> :get, :remote =>true, :class=>"btn btn-success signup-login-btn", 'data-toggle' => 'modal', 'data-target'=>'#logIn'%>
         </li>
+        <% end %>
       </ul>
       <!--/.navbar-collapse -->
     </div>
