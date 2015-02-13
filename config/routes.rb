@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'users#home'
   get 'users/unique_email' => 'users#unique_email'
+  get 'sessions/email_exist' => 'sessions#email_exist'
   resources :users
   resources :sessions
 

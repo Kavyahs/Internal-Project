@@ -3,6 +3,13 @@ class SessionsController < ApplicationController
   def new
   end
 
+  def email_exist
+    @user = User.find_by_email(params[:user][:email])
+    respond_to do |format|
+      format.json { render :json => !!@user }
+    end
+  end
+
   def create
     @user = User.find_by_email(params[:user][:email])
     if @user && @user.authenticate(params[:user][:password])

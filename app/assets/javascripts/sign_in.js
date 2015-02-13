@@ -6,6 +6,7 @@ function SignInValidator() {
     "user[email]": {
      email: true,
      required: true,
+     remote: "/sessions/email_exist"
    },
    "user[password]" : {
     required: true
@@ -16,13 +17,14 @@ errorElement: "span",
 errorClass: "help-block",
 
 messages: {
-"user[email]": {
-  required: "This field is required!",
-  email: "Please enter a valid E-Mail address!",
-},
-"user[password]": {
-  required:"This field is required!"
-}
+  "user[email]": {
+    required: "This field is required!",
+    email: "Please enter a valid E-Mail address!",
+    remote: "User doesn't exist!"
+  },
+  "user[password]": {
+    required:"This field is required!"
+  }
 },
 
 highlight: function(element) {
