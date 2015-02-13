@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-
+before_filter :require_login, only:[:index]
   def new
-  	@user = User.new
+    @user = User.new
     respond_to do |format|
       format.js{}
     end
@@ -19,10 +19,17 @@ class UsersController < ApplicationController
    if @user.valid? && @user.errors.blank?
      @user.save
      @success = true
+     session[:user_id] = @user.id
+     redirect_to users_path
+     flash[:success] = "You have been signed up successfullly!"
    else
     @success = false
+    redirect_to root_path
+    flash[:error] = "Failed to sign up!"
   end
-  redirect_to root_path
+end
+
+def index
 end
 
 private
