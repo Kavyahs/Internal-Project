@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-before_filter :require_login, only:[:index]
+  before_filter :require_login, only:[:index]
+
   def new
     @user = User.new
     respond_to do |format|

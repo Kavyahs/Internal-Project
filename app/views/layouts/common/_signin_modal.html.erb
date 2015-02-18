@@ -6,7 +6,6 @@
     </div>
     <%= form_for :user, url: sessions_path, :method => :post,remote: true, html: {:class =>"form-horizontal", :id => "sign_in"} do |f| %>
     <div class="modal-body">
-
       <form class="form-horizontal">
         <div class="form-group">
           <label for="inputEmail" class="col-sm-3 control-label">Email id</label>
@@ -28,6 +27,10 @@
         <button type="button" class="btn btn-default ok-btn-padding" data-dismiss="modal">Cancel</button>
       </div>
       <% end %>
-    </div>
-  </div>
+      <hr>
+      <div class="linkedin">
+       <%= link_to "Sign in with linkedin", "/auth/linkedin", id: "sign_in" %>
+     </div>
+   </div>
+ </div>
 </div>

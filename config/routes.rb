@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'users#home'
   get 'users/unique_email' => 'users#unique_email'
   get 'sessions/email_exist' => 'sessions#email_exist'
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'sign_out', to: 'sessions#destroy', as: 'sign_out'
   resources :users
   resources :sessions
 
