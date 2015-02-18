@@ -2,14 +2,11 @@
 .signup-login-btn {
     margin: 10px;
 }
-.landing-heding {
-    margin-top: 150px;
-}
 .ok-btn-padding {
     padding: 6px 24px;
 }
 .landing-content-area {
-    color: #ffffff;text-align: center;
+    color: #ffffff;text-align: center;background-color: #333333;padding: 100px;border-radius: 10px;
 }
 
 /*Landing Page*/
@@ -20,14 +17,14 @@ ul li span.profile-name {
     color: #fff;padding-right: 15px;font-size: 18px;vertical-align: bottom;
 }
 .event-panels {
-    border: 1px solid #959595;
+    border: 1px solid #e3e3e3;
     background-color: #F5F5F5;padding: 15px;margin-bottom: 15px;
 }
 .event-panels:hover, .event-panels.active {
-    background-color: #bdbdbd;
+    background-color: #e5e5e5;
 }
 .event-panels .order-number {
-  font-size: 24px;text-align: center; line-height: 72px;vertical-align: middle;
+    font-size: 24px;text-align: center; line-height: 72px;vertical-align: middle;
 }
 .event-panels .event-title {
     text-transform: uppercase;font-size: 16px;
@@ -41,12 +38,61 @@ ul li span.profile-name {
 .event-panels .participants .status {
     float: right;
 }
-.landig_page{
-  margin-top: 200px;
-  text-align: center;
-  color: yellow;
+
+.invite-tab {
+    height: 100px;
+}
+
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th { display: block; }
+.table-fixed tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+.table-fixed thead {
+    width: 97%;
+}
+.table-fixed thead th {
+    height: 30px;
+}
+.table-fixed tbody {
+    height: 130px;
+    overflow-y: auto;
+    width:100%;
+}
+.table-fixed tbody td,
+.table-fixed thead > tr> th {
+    float: left;
+    border-bottom-width:0;
+}
+
+.badge {
+    background-color: #4b8400;
+}
+
+.closed {
+    background-color: #bd0508;
+}
+.btns-margin-top {
+    margin-top: 100px;
+}
+.btn-lg-padding {
+    width: 200px;
+}
+.emp-name {
+    font-size: 24px;
+    line-height: 124px;
+    vertical-align: middle;
+}
+.event-section-height {
+    height: 650px;overflow-y:  scroll;
 }
 .linkedin{
   text-align: center;
   padding-bottom: 40px;
+}
+.for_empty_list{
+  color: #CACACA;
+  text-align: center;
 }
