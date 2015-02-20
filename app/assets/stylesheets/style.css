@@ -96,3 +96,6 @@ ul li span.profile-name {
   color: #CACACA;
   text-align: center;
 }
+#exampleInputFile{
+  width: 200px;
+}
