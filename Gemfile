@@ -39,6 +39,8 @@ end
 gem 'jquery-validation-rails'
 gem 'omniauth'
 gem 'omniauth-linkedin-oauth2'
+gem 'carrierwave'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
