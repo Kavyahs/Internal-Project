@@ -2,7 +2,7 @@ class EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new(employee_params)
-    if @employee.valid? && @employee.errors.blank?
+    if @employee.valid?
       @employee.save
       redirect_to employees_path
     else
