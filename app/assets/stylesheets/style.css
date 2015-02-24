@@ -1,92 +1,92 @@
 /*Landing page*/
 .signup-login-btn {
-    margin: 10px;
+  margin: 10px;
 }
 .ok-btn-padding {
-    padding: 6px 24px;
+  padding: 6px 24px;
 }
 .landing-content-area {
-    color: #ffffff;text-align: center;background-color: #333333;padding: 100px;border-radius: 10px;
+  color: #ffffff;text-align: center;background-color: #333333;padding: 100px;border-radius: 10px;
 }
 
 /*Landing Page*/
 .profile-pic {
-    width: 40px;height: 40px;margin-top: 7px;
+  width: 40px;height: 40px;margin-top: 7px;
 }
 ul li span.profile-name {
-    color: #fff;padding-right: 15px;font-size: 18px;vertical-align: bottom;
+  color: #fff;padding-right: 15px;font-size: 18px;vertical-align: bottom;
 }
 .event-panels {
-    border: 1px solid #e3e3e3;
-    background-color: #F5F5F5;padding: 15px;margin-bottom: 15px;
+  border: 1px solid #e3e3e3;
+  background-color: #F5F5F5;padding: 5px;margin-bottom: 15px;
 }
 .event-panels:hover, .event-panels.active {
-    background-color: #e5e5e5;
+  background-color: #e5e5e5;
 }
 .event-panels .order-number {
-    font-size: 24px;text-align: center; line-height: 72px;vertical-align: middle;
+  font-size: 24px;text-align: center; line-height: 72px;vertical-align: middle;
 }
 .event-panels .event-title {
-    text-transform: uppercase;font-size: 16px;
+  text-transform: uppercase;font-size: 16px;
 }
 .event-panels .organiser {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 .event-panels .participants {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 .event-panels .participants .status {
-    float: right;
+  float: right;
 }
 
 .invite-tab {
-    height: 100px;
+  height: 100px;
 }
 
 .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th { display: block; }
 .table-fixed tr:after {
-    content: ' ';
-    display: block;
-    visibility: hidden;
-    clear: both;
+  content: ' ';
+  display: block;
+  visibility: hidden;
+  clear: both;
 }
 .table-fixed thead {
-    width: 97%;
+  width: 97%;
 }
 .table-fixed thead th {
-    height: 30px;
+  height: 30px;
 }
 .table-fixed tbody {
-    height: 130px;
-    overflow-y: auto;
-    width:100%;
+  height: 130px;
+  overflow-y: auto;
+  width:100%;
 }
 .table-fixed tbody td,
 .table-fixed thead > tr> th {
-    float: left;
-    border-bottom-width:0;
+  float: left;
+  border-bottom-width:0;
 }
 
 .badge {
-    background-color: #4b8400;
+  background-color: #4b8400;
 }
 
 .closed {
-    background-color: #bd0508;
+  background-color: #bd0508;
 }
 .btns-margin-top {
-    margin-top: 100px;
+  margin-top: 100px;
 }
 .btn-lg-padding {
-    width: 200px;
+  width: 200px;
 }
 .emp-name {
-    font-size: 24px;
-    line-height: 124px;
-    vertical-align: middle;
+  font-size: 24px;
+  line-height: 104px;
+  vertical-align: middle;
 }
 .event-section-height {
-    height: 650px;overflow-y:  scroll;
+  height: 570px;overflow-y:  scroll;
 }
 .linkedin{
   text-align: center;
@@ -98,4 +98,10 @@ ul li span.profile-name {
 }
 #exampleInputFile{
   width: 200px;
+}
+.event-panels{
+  height: 130px;
+}
+.emp-name{
+  height: 80px
 }

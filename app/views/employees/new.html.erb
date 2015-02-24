@@ -1,4 +1,76 @@
-<%= render partial: 'layouts/common/employee'  %>
+<!--Content Area-->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="well">
+            <%= form_for :employee, url: employees_path, :method=>:post, html:{:class =>"form-horizontal", :id=>"Employ_card", :multipart => true } do |f| %>
+            <!--Name -->
+            <div class="form-group">
+              <label for="inputEvent" class="col-sm-4 control-label">Name : </label>
+              <div class="col-sm-7">
+                <%= f.text_field :employ_name, :class=>"form-control",:id=>"inputEvent", :placeholder=>"Name"%>
+              </div>
+              <div class="col-sm-1"></div>
+            </div>
+            <!--Contact Number -->
+            <div class="form-group">
+              <label for="inputVenue" class="col-sm-4 control-label">Contact Number :</label>
+              <div class="col-sm-7">
+                <%= f.text_field :phone_no, :class=>"form-control", :id=>"inputVenue",:placeholder=>"Contact Number" %>
+              </div>
+              <div class="col-sm-1"></div>
+            </div>
+            <!--Projects -->
+            <div class="form-group">
+              <label for="inputProject" class="col-sm-4 control-label">Projects :</label>
+              <div class="col-sm-7" id="inputProject">
+                <%= f.select :projects_name, [], {:prompt => "Select"}, { :class => "form-control" }  %>
+              </div>
+              <div class="col-sm-1"></div>
+            </div>
+            <!--Department -->
+            <div class="form-group">
+              <label for="inputDepartment" class="col-sm-4 control-label">Department :</label>
+              <div class="col-sm-7" id="inputDepartment">
+                <%= f.select :department, ['PMO', 'HR', 'Business Analysis', 'Graphic Design', 'Development', 'Testing', 'Devops'], {:prompt => "Select"}, { :class => "form-control" }  %>
+              </div>
+              <div class="col-sm-1"></div>
+            </div>
+            <!--Description -->
+            <div class="form-group">
+              <label for="inputescription" class="col-sm-4 control-label">Other Information :</label>
+              <div class="col-sm-7">
+                <%= f.text_area :employ_information, :class=>"form-control", :id=>"inputBody",:rows=>"4",:placeholder=>"Other Information"%>
+              </div>
+              <div class="col-sm-1"></div>
+            </div>
+            <!--Status -->
+            <div class="form-group">
+              <label for="inputstatus" class="col-sm-4 control-label">Profile Picture :</label>
+              <div class="col-sm-3">
+                <div class="event-title">
+                  <%= image_tag "Profile-Pic.jpg", :alt=>"image", :class=>"img-thumbnail", :id => "preview" %>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <%= f.file_field :profile_picture, :id=>"exampleInputFile" %>
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+            <div class="modal-footer">
+              <%= f.submit "OK", :class=>"btn btn-primary ok-btn-padding" %>
+              <button type="button" onclick="window.location.href='/employees'", class="btn btn-default ok-btn-padding" data-dismiss="modal">Cancel</button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
- EmployeeValidator();
+EmployeeValidator();
 </script>

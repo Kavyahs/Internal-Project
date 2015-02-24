@@ -4,10 +4,10 @@ function EmployeeValidator() {
   return this.optional(element) || value == value.match(/^\d{10}$/);
 });
 
-
- jQuery.validator.addMethod("change", function(value, element) {
-  var a = element.files[0].size;
-  if(a > 5120)
+ jQuery.validator.addMethod("image_size", function(value, element) {
+  if (value == 0)
+    return true;
+  else if(element.files[0].size > 5120)
     return false;
   else
     return true;
@@ -32,7 +32,7 @@ function EmployeeValidator() {
   },
   "employee[profile_picture]": {
     accept: "png|jpeg|jpg|JPG|JPEG|PNG",
-    change: true
+    image_size: true
   }
 },
 
@@ -56,7 +56,7 @@ messages: {
 },
 "employee[profile_picture]": {
  accept: "Invalid image format!",
- change: "File exceeds 5kb!"
+ image_size: "File exceeds 5kb!"
 }
 },
 
@@ -97,9 +97,16 @@ invalidHandler: function(event, validator) {
 
       },
       submitHandler: function(form) {
-        alert();
         form.submit();
       }
     });
-
+setTimeout(function(){ $("#exampleInputFile").change(function(){
+  if (this.files && this.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $('#preview').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(this.files[0]);
+  }
+}); }, 400);
 }
