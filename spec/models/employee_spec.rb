@@ -17,56 +17,43 @@ RSpec.describe Employee, type: :model do
     it { should allow_value('Development').for(:department)}
   end
 
-  it "should validate employ_name" do
-    ["employee name", "Name employee"].each do |n|
-      employee.employ_name = n
-      expect(employee.valid?).to be_truthy
-    end
-    ["aaaaaassssss   ddd  dffffffgggggghhh", "lllkkkjjjhhhgggfffdddsss yypppooo"].each do |n|
-      employee.employ_name = n
-      expect(employee.valid?).to be_falsy
-    end
+  it "should validate employ_name as true" do
+    employee.employ_name="employee name"
+    expect(employee.valid?).to be_truthy
   end
 
-  it "should validate phone_no" do
-    ["1234567891", "0123654789"].each do |n|
-      employee.phone_no = n
-      expect(employee.valid?).to be_truthy
-    end
-    ["123456789123", "010101010101"].each do |n|
-      employee.phone_no = n
-      expect(employee.valid?).to be_falsy
-    end
+  it "should validate employ_name as false" do
+    employee.employ_name="e"*31
+    expect(employee.valid?).to be_falsy
   end
 
-  it "should validate department" do
-    ["Development", "HR"].each do |n|
-      employee.department = n
-      expect(employee.valid?).to be_truthy
-    end
-    ["", ""].each do |n|
-      employee.department = n
-      expect(employee.valid?).to be_falsy
-    end
+  it "should validate phone_no as true" do
+    employee.phone_no="0123654789"
+    expect(employee.valid?).to be_truthy
   end
 
-  it "should validate employ_information" do
-    ["information of employee", "descripion 123456789"].each do |n|
-      employee.employ_information = n
-      expect(employee.valid?).to be_truthy
-    end
-    ["They are usually between four to eight sentences. Paragraphs can begin with an
-      indentation (about five spaces), or by missing a line out, and then starting ag
-        This thesis statement of the paragraph tells the reader what the paper will be ab
-        about the body paragraph. After one has completed an essay, one must close with
-        a conclusion which restates the main idea.",
-        "ain; this makes telling when one paragraph ends and another begins easier. In most
-        out. The intro is used to give basic knowledge about the thesis. The body paragra
-        phs are used to tell why your thesis is relevant. The thesis contains the main idea
-        about the body paragraph. After one has completed an essay, one must close with
-        a conclusion which restates the main idea."].each do |n|
-      employee.employ_information = n
-      expect(employee.valid?).to be_falsy
-    end
+  it "should validate phone_no as false" do
+    employee.phone_no="010101010101"
+    expect(employee.valid?).to be_falsy
+  end
+
+  it "should validate department as true" do
+    employee.department="Development"
+    expect(employee.valid?).to be_truthy
+  end
+
+  it "should validate department as false" do
+    employee.department=""
+    expect(employee.valid?).to be_falsy
+  end
+
+  it "should validate employ_information as true" do
+    employee.employ_information="information of employee"
+    expect(employee.valid?).to be_truthy
+  end
+
+  it "should validate employ_information as false" do
+    employee.employ_information="a"*321
+    expect(employee.valid?).to be_falsy
   end
 end

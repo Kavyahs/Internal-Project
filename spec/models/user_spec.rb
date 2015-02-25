@@ -18,46 +18,33 @@ RSpec.describe User, :type => :model do
     it { should allow_value('kavya@gmail.com').for(:email)}
   end
 
-  it "should validate name" do
-    # checking valid name
-    ["Name Intial", "user name"].each do |n|
-      user.name = n
-      value = user.valid?
-      expect(value).to be_truthy
-    end
-    # checking invalid name
-    ["name789", "user@56"].each do |n|
-      user.name = n
-      value = user.valid?
-      expect(value).to be_falsy
-    end
+  it "should validate name as true" do
+    user.name="Name Intial"
+    expect(user.valid?).to be_truthy
   end
 
-  it "should validate email" do
-    # checking valid email
-    ["email.123@domain.com", "email_123@domain.com"].each do |n|
-      user.email = n
-      value = user.valid?
-      expect(value).to be_truthy
-    end
-    # checking invalid email
-    ["email@com.", "email@.com"].each do |n|
-      user.email = n
-      value = user.valid?
-      expect(value).to be_falsy
-    end
+  it "should validate name as false" do
+    user.name="name789"
+    expect(user.valid?).to be_falsy
   end
 
-  it "should validate password lenght" do
-    # checking invalid password
-    user.password = "wg"
-    user.valid?
-    expect(user.errors[:password].size).to be 1
-    expect(user).to be_invalid
-    # checking valid password
-    user.password = "kavya123"
-    user.valid?
-    expect(user.errors[:password].size).to be 0
-    expect(user).to be_valid
+  it "should validate email as true" do
+    user.email="email.123@domain.com"
+    expect(user.valid?).to be_truthy
+  end
+
+  it "should validate email as false" do
+    user.email="email@com."
+    expect(user.valid?).to be_falsy
+  end
+
+  it "should validate password as true" do
+    user.password="kavya123"
+    expect(user.valid?).to be_truthy
+  end
+
+  it "should validate password as false" do
+    user.password="wg"
+    expect(user.valid?).to be_falsy
   end
 end

@@ -19,4 +19,6 @@
 //= require sign_up
 //= require sign_in
 //= require employee
+//= require preview_image
+//= require employee_list
 //= require_tree .

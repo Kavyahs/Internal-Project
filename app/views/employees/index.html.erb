@@ -4,29 +4,60 @@
     <div class="col-sm-12">
       <!--Create Button trigger modal -->
       <div class="well-sm pull-right">
-      <%= link_to "Create", new_employee_path, :class => "btn btn-warning" %>
+        <%= link_to "Create", new_employee_path, :class => "btn btn-warning" %>
       </div>
     </div>
     <div class="clearfix"></div>
   </div>
-
+  <% if @employees.present? %>
   <div class="row">
     <!--List View column -->
     <div class="col-sm-5 event-section-height">
-      <p class="for_empty_list">Employee records not found</p>
-    </div>
-    <!-- ./List view -->
-
-    <!--Show View item -->
-    <div class="col-sm-7">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="well">
-          <p class="for_empty_list">Nothing to display</p>
+      <% @employees.each do |employ| %>
+      <div class="event-panels">
+        <%= link_to edit_employee_path(employ), remote: true do %>
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="emp-name"><%= employ.employ_name.titleize %></div>
           </div>
+          <div class="col-sm-4">
+            <div class="event-title">
+              <% if employ.profile_picture.present? %>
+              <%= image_tag employ.profile_picture, :alt=>"image", :class=>"img-thumbnail" %>
+              <% else %>
+              <%= image_tag "Profile-Pic.jpg", :alt=>"image", :class=>"img-thumbnail" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+    <!--Show View item -->
+    <div id="div_emp_details">
+      <%= render partial: 'edit' %>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</div>
+</div>
+<% else %>
+<div class="row">
+  <!--List View column -->
+  <div class="col-sm-5 event-section-height">
+    <p class="for_empty_list">Employee records not found</p>
+  </div>
+  <!--Show View item -->
+  <div class="col-sm-7">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="well">
+          <p class="for_empty_list">Nothing to display</p>
         </div>
       </div>
     </div>
-    <!-- ./ Show item -->
   </div>
+</div>
+<% end %>
 </div>
