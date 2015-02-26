@@ -22,4 +22,5 @@
 //= require preview_image
 //= require employee_list
 //= require project
+//= require validations
 //= require_tree .

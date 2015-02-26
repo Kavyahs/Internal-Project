@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
       end
       redirect_to projects_path
     else
-      render 'new'
+      redirect_to new_project_path
     end
   end
 
