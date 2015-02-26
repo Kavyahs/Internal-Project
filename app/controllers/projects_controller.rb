@@ -4,6 +4,11 @@ class ProjectsController < ApplicationController
     @employees = Employee.all
   end
 
+  def index
+    @projects = Project.order("updated_at desc")
+    @project = @projects.first
+  end
+
   def create
     @project = Project.new(project_params)
     if @project.valid?
@@ -14,6 +19,27 @@ class ProjectsController < ApplicationController
       redirect_to projects_path
     else
       redirect_to new_project_path
+    end
+  end
+
+  def edit
+    @employees = Employee.all
+    @project = Project.find(params[:id])
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    if @project.valid?
+      @project.update(project_params)
+      if params["Projectemployee"].present?
+        @project.saveemployees(params["Projectemployee"]["e"], @project.id)
+      end
+      redirect_to projects_path
+    else
+      render 'index'
     end
   end
 

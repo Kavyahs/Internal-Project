@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="well">
-            <%= form_for :project, url: projects_path, :method=>:post, html:{:class =>"form-horizontal", :id=>"Project_card", :multipart => true } do |f| %>
+            <%= form_for :project, url: project_path(@project), :method=>:patch, html:{:class =>"form-horizontal", :id=>"Project_card", :multipart => true } do |f| %>
             <!--Name -->
             <div class="form-group">
               <label for="inputEvent" class="col-sm-4 control-label">Name : </label>
@@ -26,20 +26,21 @@
             </div>
             <!--Employees -->
             <div class="form-group">
-             <label for="inputDescription" class="col-sm-4 control-label">Employees :</label>
+             <label for="inputescription" class="col-sm-4 control-label">Employees :</label>
              <div class="col-sm-7">
                <ul class="form-control event-section-height">
+                 <% @employees= Employee.all %>
+                 <% eid = ProjectsEmployees.where(project_id: @project.id).pluck(:employee_id) %>
                  <% @employees.each do |e|%>
-                 <li><%= check_box_tag "Projectemployee[e][]", e.id %>
-                  <%= e.employ_name.titleize%>
-                </li>
-                <%end%>
-              </ul>
-            </div>
-            <div class="col-sm-2"></div>
-          </div>
-          <!--Other Information -->
-          <div class="form-group">
+                 <li><%= check_box_tag "Projectemployee[e][]", e.id unless eid.include?(e.id)%><%= e.employ_name.titleize%>
+                 </li>
+                 <%end%>
+               </ul>
+             </div>
+             <div class="col-sm-2"></div>
+           </div>
+           <!--Other Information -->
+           <div class="form-group">
             <label for="inputOther" class="col-sm-4 control-label">Other Information :</label>
             <div class="col-sm-7">
               <%= f.text_area :project_information, :class=>"form-control", :id=>"inputOther", :rows=>"4" %>

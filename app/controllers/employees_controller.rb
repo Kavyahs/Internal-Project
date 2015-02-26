@@ -34,6 +34,9 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
     if @employee.valid?
       @employee.update(employee_params)
+      if params["Employprojects"].present?
+        @employee.saveprojects(params["Employprojects"]["p"], @employee.id)
+      end
       redirect_to employees_path
     else
       render 'index'

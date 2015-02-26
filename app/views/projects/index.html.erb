@@ -9,6 +9,38 @@
     </div>
     <div class="clearfix"></div>
   </div>
+  <% if @projects.present? %>
+  <div class="row">
+    <!--List View column -->
+    <div class="col-sm-5 event-section-height">
+      <% @projects.each do |project| %>
+      <div class="event-panels">
+        <%= link_to edit_project_path(project), remote: true do %>
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="emp-name"><%= project.project_name.titleize %></div>
+          </div>
+          <div class="col-sm-4">
+            <div class="event-title">
+              <% if project.project_icon.present? %>
+              <%= image_tag project.project_icon, :alt=>"image", :class=>"img-thumbnail" %>
+              <% else %>
+              <%= image_tag "QWINIX_profile_image.png", :alt=>"image", :class=>"img-thumbnail" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+    <!--Show View item -->
+    <div id="div_pro_details">
+      <%= render partial: 'edit' %>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+  <% else %>
   <div class="row">
     <!--List View column -->
     <div class="col-sm-5 event-section-height">
@@ -25,4 +57,5 @@
       </div>
     </div>
   </div>
+  <% end %>
 </div>
