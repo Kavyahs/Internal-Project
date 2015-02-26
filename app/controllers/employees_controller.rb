@@ -1,6 +1,7 @@
 class EmployeesController < ApplicationController
   def new
     @employee = Employee.new
+    @projects = Project.all
   end
 
   def index
@@ -12,6 +13,9 @@ class EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
     if @employee.valid?
       @employee.save
+      if params["Employeeprojects"].present?
+        @employee.saveprojects(params["Employeeprojects"]["p"], @employee.id)
+      end
       redirect_to employees_path
     else
       render 'new'
@@ -19,6 +23,7 @@ class EmployeesController < ApplicationController
   end
 
   def edit
+    @projects = Project.all
     @employee = Employee.find(params[:id])
     respond_to do |format|
       format.js {}
@@ -27,7 +32,8 @@ class EmployeesController < ApplicationController
 
   def update
     @employee = Employee.find(params[:id])
-    if @employee.update(employee_params)
+    if @employee.valid?
+      @employee.update(employee_params)
       redirect_to employees_path
     else
       render 'index'
@@ -36,6 +42,6 @@ class EmployeesController < ApplicationController
 
   private
   def employee_params
-    params.require(:employee).permit(:employ_name, :phone_no, :projects_name, :department, :employ_information, :profile_picture)
+    params.require(:employee).permit(:employ_name, :phone_no, :department, :employ_information, :profile_picture)
   end
 end
