@@ -18,7 +18,7 @@ class EmployeesController < ApplicationController
       end
       redirect_to employees_path
     else
-      render 'new'
+      redirect_to new_employee_path
     end
   end
 
