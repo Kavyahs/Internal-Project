@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_filter :require_login
+
   def new
     @project = Project.new
     @employees = Employee.all
@@ -11,10 +13,11 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.user_id = current_user.id
     if @project.valid?
       @project.save
       if params["Projectemployee"].present?
-        @project.saveemployees(params["Projectemployee"]["e"], @project.id)
+        @project.saveemployees(params["Projectemployee"], @project.id)
       end
       redirect_to projects_path
     else
@@ -35,7 +38,7 @@ class ProjectsController < ApplicationController
     if @project.valid?
       @project.update(project_params)
       if params["Projectemployee"].present?
-        @project.saveemployees(params["Projectemployee"]["e"], @project.id)
+        @project.saveemployees(params["Projectemployee"], @project.id)
       end
       redirect_to projects_path
     else

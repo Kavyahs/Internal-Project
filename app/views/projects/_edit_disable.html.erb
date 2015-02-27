@@ -7,12 +7,12 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="well">
-            <%= form_for :project, url: projects_path, :method=>:post, html:{:class =>"form-horizontal", :id=>"Project_card", :multipart => true } do |f| %>
+            <%= form_for :project, url: project_path(@project), :method=>:patch, html:{:class =>"form-horizontal", :id=>"Project_card", :multipart => true } do |f| %>
             <!--Name -->
             <div class="form-group">
               <label for="inputEvent" class="col-sm-4 control-label">Name : </label>
               <div class="col-sm-7">
-                <%= f.text_field :project_name, :class=>"form-control",:id=>"inputEvent", :placeholder=>"Name"%>
+                <%= f.text_field :project_name, :class=>"form-control",:id=>"inputEvent", :placeholder=>"Name", :disabled => true%>
               </div>
               <div class="col-sm-1"></div>
             </div>
@@ -20,29 +20,30 @@
             <div class="form-group">
               <label for="inputDescription" class="col-sm-4 control-label">Description :</label>
               <div class="col-sm-7">
-                <%= f.text_area :projrct_description, :class=>"form-control", :id=>"inputDescription", :rows => "4" %>
+                <%= f.text_area :projrct_description, :class=>"form-control", :id=>"inputDescription", :rows => "4", :disabled => true %>
               </div>
               <div class="col-sm-1"></div>
             </div>
             <!--Employees -->
             <div class="form-group">
-             <label for="inputDescription" class="col-sm-4 control-label">Employees :</label>
+             <label for="inputescription" class="col-sm-4 control-label">Employees :</label>
              <div class="col-sm-7">
                <ul class="form-control event-section-height">
+                 <% @employees= Employee.all %>
+                 <% eid = ProjectsEmployees.where(project_id: @project.id).pluck(:employee_id) %>
                  <% @employees.each do |e|%>
-                 <li><%= check_box_tag "Projectemployee[]", e.id %>
-                  <%= e.employ_name.titleize%>
-                </li>
-                <%end%>
-              </ul>
-            </div>
-            <div class="col-sm-2"></div>
-          </div>
-          <!--Other Information -->
-          <div class="form-group">
+                 <li><%= e.employ_name.titleize if eid.include?(e.id)%>
+                 </li>
+                 <%end%>
+               </ul>
+             </div>
+             <div class="col-sm-2"></div>
+           </div>
+           <!--Other Information -->
+           <div class="form-group">
             <label for="inputOther" class="col-sm-4 control-label">Other Information :</label>
             <div class="col-sm-7">
-              <%= f.text_area :project_information, :class=>"form-control", :id=>"inputOther", :rows=>"4" %>
+              <%= f.text_area :project_information, :class=>"form-control", :id=>"inputOther", :rows=>"4", :disabled => true %>
               <p></p>
             </div>
             <div class="col-sm-1"></div>
@@ -55,15 +56,11 @@
                 <%= image_tag "QWINIX_profile_image.png", :alt=>"image", :class=>"img-thumbnail", :id => "preview" %></div>
               </div>
               <div class="col-sm-3">
-                <%= f.file_field :project_icon, :id=>"exampleInputFile" %>
+                <%= f.file_field :project_icon, :id=>"exampleInputFile", :disabled => true %>
               </div>
               <div class="col-sm-2"></div>
             </div>
-            <div class="modal-footer">
-              <%= f.submit "OK", :class=>"btn btn-primary ok-btn-padding" %>
-              <button type="button" onclick="window.location.href='/projects'", class="btn btn-default ok-btn-padding" data-dismiss="modal">Cancel</button>
               <% end %>
-            </div>
           </div>
         </div>
       </div>
