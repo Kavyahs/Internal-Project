@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   has_many :employees, through: :projects_employees
-  belongs_to :projects_employees
+  has_many :projects_employees
   has_many :users
 
   mount_uploader :project_icon, ImageUploader

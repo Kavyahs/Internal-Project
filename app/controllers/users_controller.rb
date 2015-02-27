@@ -30,7 +30,12 @@ class UsersController < ApplicationController
   end
 end
 
-def index
+def home
+  if current_user
+    render "index"
+  else
+    render "home"
+  end
 end
 
 private

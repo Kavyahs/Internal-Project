@@ -3,12 +3,13 @@ class EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
-    @projects = Project.all
+    @projects = Project.where(user_id: current_user.id)
   end
 
   def index
-    @employees=Employee.order("updated_at desc")
+    @employees=Employee.where(user_id: current_user.id).order("updated_at desc")
     @employee=@employees.first
+    @projects = Project.where(user_id: current_user.id)
   end
 
   def create
@@ -26,7 +27,7 @@ class EmployeesController < ApplicationController
   end
 
   def edit
-    @projects = Project.all
+    @projects = Project.where(user_id: current_user.id)
     @employee = Employee.find(params[:id])
     respond_to do |format|
       format.js {}

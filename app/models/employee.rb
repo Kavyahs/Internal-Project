@@ -1,5 +1,5 @@
 class Employee < ActiveRecord::Base
-  belongs_to :projects_employees
+  has_many :projects_employees
   has_many :projects, through: :projects_employees
   has_many :users
 
