@@ -105,3 +105,7 @@ ul li span.profile-name {
 .emp-name{
   height: 80px
 }
+ul.event-section-height {
+  list-style-type: none;
+  height: 110px;
+}

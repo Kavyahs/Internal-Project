@@ -2,6 +2,8 @@ class Project < ActiveRecord::Base
   has_many :employees, through: :projects_employees
   belongs_to :projects_employees
 
+  mount_uploader :project_icon, ImageUploader
+
   validates :project_name, presence: true, :length => {:maximum => 30}
 
   validates :projrct_description, presence: true
