@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe ProjectsController, type: :controller do
   let(:project) {FactoryGirl.create(:project)}
+  let(:employee) {FactoryGirl.create(:employee)}
+  let(:user) {FactoryGirl.create(:user)}
 
   describe "POST create" do
     it "should create a project" do
@@ -13,6 +15,7 @@ RSpec.describe ProjectsController, type: :controller do
           project_icon: "project.jpeg"
         }
       }
+      session[:user_id] = user.id
       expect do
         post :create, project_params
       end.to change(Project, :count).by(1)
@@ -22,7 +25,8 @@ RSpec.describe ProjectsController, type: :controller do
   describe "GET index" do
     it "assigns all projects as @project" do
       get :index
-      assigns(:projects).should eq([project])
+      assigns(:project).should eq(@project)
+      assigns(:employee).should eq(@employee)
     end
   end
 
