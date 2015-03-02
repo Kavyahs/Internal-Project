@@ -3,11 +3,14 @@ require 'rails_helper'
 RSpec.describe EmployeesController, :type => :controller do
 
   let(:employee) {FactoryGirl.create(:employee)}
+  let(:project) {FactoryGirl.create(:project)}
+  let(:user) {FactoryGirl.create(:user)}
 
   describe "GET index" do
     it "assigns all employees as @employee" do
       get :index
-      assigns(:employees).should eq([employee])
+      assigns(:project).should eq(@project)
+      assigns(:employee).should eq(@employee)
     end
   end
 
@@ -17,12 +20,12 @@ RSpec.describe EmployeesController, :type => :controller do
         employee: {
           employ_name: "name is employee",
           phone_no: "1234567890",
-          projects_name: "My project",
           department: "Development",
           employ_information: "my address my city",
           profile_picture: "smile.jpeg"
         }
       }
+      session[:user_id] = user.id
       expect do
         post :create, employee_params
       end.to change(Employee, :count).by(1)

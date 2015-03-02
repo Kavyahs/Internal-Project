@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     end
     if user
       session[:user_id] = user.id
-      redirect_to users_path
+      redirect_to root_path
       flash[:success] = "You have logged in successfullly!"
     else
       flash[:error] = "Invalid email or password"

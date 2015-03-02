@@ -29,10 +29,9 @@
              <label for="inputescription" class="col-sm-4 control-label">Employees :</label>
              <div class="col-sm-7">
                <ul class="form-control event-section-height">
-                 <% @employees= Employee.all %>
                  <% eid = ProjectsEmployees.where(project_id: @project.id).pluck(:employee_id) %>
                  <% @employees.each do |e|%>
-                 <li><%= check_box_tag "Projectemployee[e][]", e.id unless eid.include?(e.id)%><%= e.employ_name.titleize%>
+                 <li><%= check_box_tag "Projectemployee[]", e.id unless eid.include?(e.id)%><%= e.employ_name.titleize%>
                  </li>
                  <%end%>
                </ul>

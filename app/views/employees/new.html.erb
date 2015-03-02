@@ -29,7 +29,7 @@
              <div class="col-sm-7">
                <ul class="form-control event-section-height">
                  <% @projects.each do |p|%>
-                 <li><%= check_box_tag "Employeeprojects[p][]", p.id %>
+                 <li><%= check_box_tag "Employeeprojects[]", p.id %>
                   <%=p.project_name.titleize%>
                 </li>
                 <%end%>

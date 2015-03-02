@@ -1,20 +1,24 @@
 class EmployeesController < ApplicationController
+  before_filter :require_login
+
   def new
     @employee = Employee.new
-    @projects = Project.all
+    @projects = Project.where(user_id: current_user.id)
   end
 
   def index
-    @employees=Employee.order("updated_at desc")
+    @employees=Employee.where(user_id: current_user.id).order("updated_at desc")
     @employee=@employees.first
+    @projects = Project.where(user_id: current_user.id)
   end
 
   def create
     @employee = Employee.new(employee_params)
+    @employee.user_id = current_user.id
     if @employee.valid?
       @employee.save
       if params["Employeeprojects"].present?
-        @employee.saveprojects(params["Employeeprojects"]["p"], @employee.id)
+        @employee.saveprojects(params["Employeeprojects"], @employee.id)
       end
       redirect_to employees_path
     else
@@ -23,7 +27,7 @@ class EmployeesController < ApplicationController
   end
 
   def edit
-    @projects = Project.all
+    @projects = Project.where(user_id: current_user.id)
     @employee = Employee.find(params[:id])
     respond_to do |format|
       format.js {}
@@ -35,7 +39,7 @@ class EmployeesController < ApplicationController
     if @employee.valid?
       @employee.update(employee_params)
       if params["Employprojects"].present?
-        @employee.saveprojects(params["Employprojects"]["p"], @employee.id)
+        @employee.saveprojects(params["Employprojects"], @employee.id)
       end
       redirect_to employees_path
     else
