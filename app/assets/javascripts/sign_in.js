@@ -64,7 +64,6 @@ invalidHandler: function(event, validator) {
 
       },
       submitHandler: function(form) {
-        alert();
         form.submit();
       }
     });
