@@ -2,12 +2,9 @@ class User < ActiveRecord::Base
   belongs_to :employee
   belongs_to :project
 
-  has_secure_password validations: true, :unless => proc{|u| u.provider.present?}
+  has_secure_password validations: false
 
   validates :password, presence: true, :length => {:minimum => 6},
-  :unless => proc{|u| u.provider.present?}
-
-  validates :password_confirmation, presence: true,
   :unless => proc{|u| u.provider.present?}
 
   validates :name, presence: true,

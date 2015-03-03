@@ -13,7 +13,6 @@ RSpec.describe User, :type => :model do
     it { should validate_presence_of :email}
     it { should validate_uniqueness_of :email}
     it { should validate_presence_of :password }
-    it { should validate_presence_of :password_confirmation }
     it { should allow_value('Kavya H S').for(:name)}
     it { should allow_value('kavya@gmail.com').for(:email)}
   end
