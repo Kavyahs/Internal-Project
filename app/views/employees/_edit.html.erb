@@ -9,7 +9,7 @@
             <%= form_for :employee, url: employee_path(@employee), :method=>:patch, html:{:class =>"form-horizontal", :id=>"Employ_card", :multipart => true } do |f| %>
             <!--Name -->
             <div class="form-group">
-              <label for="inputEvent" class="col-sm-4 control-label">Name : </label>
+              <label for="inputEvent" class="col-sm-4 control-label">Name * : </label>
               <div class="col-sm-7">
                 <%= f.text_field :employ_name, :class=>"form-control",:id=>"inputEvent", :placeholder=>"Name"%>
               </div>
@@ -17,67 +17,80 @@
             </div>
             <!--Contact Number -->
             <div class="form-group">
-              <label for="inputVenue" class="col-sm-4 control-label">Contact Number :</label>
+              <label for="inputVenue" class="col-sm-4 control-label">Contact Number * :</label>
               <div class="col-sm-7">
                 <%= f.text_field :phone_no, :class=>"form-control", :id=>"inputVenue",:placeholder=>"Contact Number" %>
               </div>
               <div class="col-sm-1"></div>
             </div>
             <!--Projects -->
+            <% pid = ProjectsEmployees.where(employee_id: @employee.id).pluck(:project_id) %>
             <div class="form-group">
-             <label for="inputescription" class="col-sm-4 control-label">Projects :</label>
+             <label for="inputDescription" class="col-sm-4 control-label">Projects :</label>
              <div class="col-sm-7">
                <ul class="form-control event-section-height">
-                 <% pid = ProjectsEmployees.where(employee_id: @employee.id).pluck(:project_id) %>
                  <% @projects.each do |p|%>
-                 <li><%= check_box_tag "Employprojects[]", p.id unless pid.include?(p.id)%>
-                  <%= p.project_name.titleize %>
-                </li>
-                <%end%>
-              </ul>
+                 <% if pid.include?(p.id) %>
+                 <li><%= p.project_name.titleize %></li>
+                 <%end%><%end%>
+               </ul>
+             </div>
+             <div class="col-sm-2"></div>
+           </div>
+           <div class="form-group">
+             <label for="inputDescription" class="col-sm-4 control-label">Add Projects :</label>
+             <div class="col-sm-7">
+              <ul class="form-control event-section-height">
+               <% @projects.each do |p|%>
+               <% unless pid.include?(p.id) %>
+               <li><%= check_box_tag "Employprojects[]", p.id %>
+                <%= p.project_name.titleize %>
+              </li>
+              <%end%><%end%>
+            </ul>
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+        <!--Department -->
+        <div class="form-group">
+          <label for="inputDepartment" class="col-sm-4 control-label">Department * :</label>
+          <div class="col-sm-7" id="inputDepartment">
+            <%= f.select :department, ['PMO', 'HR', 'Business Analysis', 'Graphic Design', 'Development', 'Testing', 'Devops'], {:prompt => "Select"}, { :class => "form-control" }  %>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+        <!--Description -->
+        <div class="form-group">
+          <label for="inputescription" class="col-sm-4 control-label">Other Information :</label>
+          <div class="col-sm-7">
+            <%= f.text_area :employ_information, :class=>"form-control", :id=>"inputBody",:rows=>"4",:placeholder=>"Other Information"%>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+        <!--Status -->
+        <div class="form-group">
+          <label for="inputstatus" class="col-sm-4 control-label">Profile Picture :</label>
+          <div class="col-sm-3">
+            <div class="event-title">
+              <% if @employee.profile_picture.present? %>
+              <%= image_tag @employee.profile_picture, :alt=>"image", :class=>"img-thumbnail", :id => "preview" %>
+              <% else %>
+              <%= image_tag "Profile-Pic.jpg", :alt=>"image", :class=>"img-thumbnail", :id => "preview" %>
+              <% end %></div>
+            </div>
+            <div class="col-sm-3">
+              <%= f.file_field :profile_picture, :id=>"exampleInputFile" %>
             </div>
             <div class="col-sm-2"></div>
           </div>
-          <!--Department -->
-          <div class="form-group">
-            <label for="inputDepartment" class="col-sm-4 control-label">Department :</label>
-            <div class="col-sm-7" id="inputDepartment">
-              <%= f.select :department, ['PMO', 'HR', 'Business Analysis', 'Graphic Design', 'Development', 'Testing', 'Devops'], {:prompt => "Select"}, { :class => "form-control" }  %>
-            </div>
-            <div class="col-sm-1"></div>
-          </div>
-          <!--Description -->
-          <div class="form-group">
-            <label for="inputescription" class="col-sm-4 control-label">Other Information :</label>
-            <div class="col-sm-7">
-              <%= f.text_area :employ_information, :class=>"form-control", :id=>"inputBody",:rows=>"4",:placeholder=>"Other Information"%>
-            </div>
-            <div class="col-sm-1"></div>
-          </div>
-          <!--Status -->
-          <div class="form-group">
-            <label for="inputstatus" class="col-sm-4 control-label">Profile Picture :</label>
-            <div class="col-sm-3">
-              <div class="event-title">
-                <% if @employee.profile_picture.present? %>
-                <%= image_tag @employee.profile_picture, :alt=>"image", :class=>"img-thumbnail", :id => "preview" %>
-                <% else %>
-                <%= image_tag "Profile-Pic.jpg", :alt=>"image", :class=>"img-thumbnail", :id => "preview" %>
-                <% end %></div>
-              </div>
-              <div class="col-sm-3">
-                <%= f.file_field :profile_picture, :id=>"exampleInputFile" %>
-              </div>
-              <div class="col-sm-2"></div>
-            </div>
-            <div class="modal-footer">
-              <%= f.submit "OK", :class=>"btn btn-primary ok-btn-padding" %>
-              <button type="button" onclick="window.location.href='/employees'", class="btn btn-default ok-btn-padding" data-dismiss="modal">Cancel</button>
-              <% end %>
-            </div>
+          <div class="modal-footer">
+            <%= f.submit "OK", :class=>"btn btn-primary ok-btn-padding" %>
+            <button type="button" onclick="window.location.href='/employees'", class="btn btn-default ok-btn-padding" data-dismiss="modal">Cancel</button>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>

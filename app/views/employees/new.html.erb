@@ -9,7 +9,7 @@
             <%= form_for :employee, url: employees_path, :method=>:post, html:{:class =>"form-horizontal", :id=>"Employ_card", :multipart => true } do |f| %>
             <!--Name -->
             <div class="form-group">
-              <label for="inputEvent" class="col-sm-4 control-label">Name : </label>
+              <label for="inputEvent" class="col-sm-4 control-label">Name * : </label>
               <div class="col-sm-7">
                 <%= f.text_field :employ_name, :class=>"form-control",:id=>"inputEvent", :placeholder=>"Name"%>
               </div>
@@ -17,7 +17,7 @@
             </div>
             <!--Contact Number -->
             <div class="form-group">
-              <label for="inputVenue" class="col-sm-4 control-label">Contact Number :</label>
+              <label for="inputVenue" class="col-sm-4 control-label">Contact Number * :</label>
               <div class="col-sm-7">
                 <%= f.text_field :phone_no, :class=>"form-control", :id=>"inputVenue",:placeholder=>"Contact Number" %>
               </div>
@@ -39,7 +39,7 @@
           </div>
           <!--Department -->
           <div class="form-group">
-            <label for="inputDepartment" class="col-sm-4 control-label">Department :</label>
+            <label for="inputDepartment" class="col-sm-4 control-label">Department * :</label>
             <div class="col-sm-7" id="inputDepartment">
               <%= f.select :department, ['PMO', 'HR', 'Business Analysis', 'Graphic Design', 'Development', 'Testing', 'Devops'], {:prompt => "Select"}, { :class => "form-control" }  %>
             </div>
