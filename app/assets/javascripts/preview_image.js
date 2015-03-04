@@ -7,3 +7,8 @@ setTimeout(function(){ $("#exampleInputFile").change(function(){
     reader.readAsDataURL(this.files[0]);
   }
 }); }, 400);
+$(document).ready(function(){
+  setTimeout(function(){
+    $('#flash').remove();
+  }, 5000);
+})

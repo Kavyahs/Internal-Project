@@ -7,10 +7,14 @@ function EmployeeValidator() {
  jQuery.validator.addMethod("image_size", function(value, element) {
   if (value == 0)
     return true;
-  else if(element.files[0].size > 5120)
+  else if(element.files[0].size > 50120)
     return false;
   else
     return true;
+});
+
+ jQuery.validator.addMethod("alpha", function(value, element) {
+  return this.optional(element) || value == value.match(/[a-zA-Z\s]+$/);
 });
 
  $('#Employ_card').validate({
@@ -18,7 +22,8 @@ function EmployeeValidator() {
   rules: {
     "employee[employ_name]": {
       required: true,
-      maxlength: 30
+      maxlength: 30,
+      alpha: true
     },
     "employee[phone_no]": {
      required: true,
@@ -42,7 +47,8 @@ errorClass: "help-block",
 messages: {
   "employee[employ_name]": {
     required:"This field is required!",
-    maxlength: "Maximum request length exceeded!"
+    maxlength: "Maximum request length exceeded!",
+    alpha: "Please enter a valid name!"
   },
   "employee[phone_no]": {
    required: "This field is required!",
@@ -56,7 +62,7 @@ messages: {
 },
 "employee[profile_picture]": {
  accept: "Invalid image format!",
- image_size: "File exceeds 5kb!"
+ image_size: "File exceeds 50kb!"
 }
 },
 

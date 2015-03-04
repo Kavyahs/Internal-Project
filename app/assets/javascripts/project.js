@@ -3,7 +3,7 @@ function ProjectsValidator() {
  jQuery.validator.addMethod("image_size", function(value, element) {
   if (value == 0)
     return true;
-  else if(element.files[0].size > 5120)
+  else if(element.files[0].size > 50120)
     return false;
   else
     return true;
@@ -44,7 +44,7 @@ messages: {
 },
 "project[project_icon]": {
  accept: "Invalid image format!",
- image_size: "File exceeds 5kb!"
+ image_size: "File exceeds 50kb!"
 }
 },
 
