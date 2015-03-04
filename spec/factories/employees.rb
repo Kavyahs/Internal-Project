@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :employee do
-    employ_name "employee_name"
+    employ_name "employee name"
     phone_no "1234567890"
     projects_name "project1"
     department "Development"

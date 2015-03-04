@@ -27,6 +27,11 @@ RSpec.describe Employee, type: :model do
     expect(employee.valid?).to be_falsy
   end
 
+  it "should validate employ_name as false" do
+    employee.employ_name="e*31"
+    expect(employee.valid?).to be_falsy
+  end
+
   it "should validate phone_no as true" do
     employee.phone_no="0123654789"
     expect(employee.valid?).to be_truthy
