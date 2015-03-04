@@ -10,7 +10,7 @@
             <%= form_for :project, url: projects_path, :method=>:post, html:{:class =>"form-horizontal", :id=>"Project_card", :multipart => true } do |f| %>
             <!--Name -->
             <div class="form-group">
-              <label for="inputEvent" class="col-sm-4 control-label">Name : </label>
+              <label for="inputEvent" class="col-sm-4 control-label">Name * : </label>
               <div class="col-sm-7">
                 <%= f.text_field :project_name, :class=>"form-control",:id=>"inputEvent", :placeholder=>"Name"%>
               </div>
@@ -18,7 +18,7 @@
             </div>
             <!--Description -->
             <div class="form-group">
-              <label for="inputDescription" class="col-sm-4 control-label">Description :</label>
+              <label for="inputDescription" class="col-sm-4 control-label">Description * :</label>
               <div class="col-sm-7">
                 <%= f.text_area :projrct_description, :class=>"form-control", :id=>"inputDescription", :rows => "4" %>
               </div>
