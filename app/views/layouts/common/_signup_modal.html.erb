@@ -9,28 +9,28 @@
      <!--  <form class="form-horizontal"> -->
      <%= form_for @user, :method=>:post, authenticity_token: true, html:{:class =>"form-horizontal", :id=>"sign_up" } do |f| %>
      <div class="form-group">
-      <label for="Name" class="col-sm-3 control-label">Name</label>
+      <label for="Name" class="col-sm-3 control-label">Name * </label>
       <div class="col-sm-7">
         <%= f.text_field :name, :class=>"form-control",:id=>"user_name", :placeholder=>"Name"%>
       </div>
       <div class="col-sm-2"></div>
     </div>
     <div class="form-group">
-      <label for="inputEmail" class="col-sm-3 control-label">Email id</label>
+      <label for="inputEmail" class="col-sm-3 control-label">Email id * </label>
       <div class="col-sm-7">
         <%= f.text_field :email, :class=>"form-control",:id=>"user_email", :placeholder=>"Email Address"%>
       </div>
       <div class="col-sm-2"></div>
     </div>
     <div class="form-group">
-      <label for="inputPassword" class="col-sm-3 control-label">Password</label>
+      <label for="inputPassword" class="col-sm-3 control-label">Password * </label>
       <div class="col-sm-7">
         <%= f.password_field :password, :class=>"form-control", :id=>"user_password", :placeholder=>"Password"%>
       </div>
       <div class="col-sm-2"></div>
     </div>
     <div class="form-group">
-      <label for="inputPassword" class="col-sm-3 control-label">Confirm</label>
+      <label for="inputPassword" class="col-sm-3 control-label">Confirm * </label>
       <div class="col-sm-7">
         <%= f.password_field :password_confirmation, :class=>"form-control", :id=>"user_password_confirmation", :placeholder=>"confirmation password"%>
       </div>
