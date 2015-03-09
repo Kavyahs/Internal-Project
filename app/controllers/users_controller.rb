@@ -21,7 +21,7 @@ class UsersController < ApplicationController
      @user.save
      @success = true
      session[:user_id] = @user.id
-     redirect_to users_path
+     redirect_to root_path
      flash[:success] = "You have been signed up successfullly!"
    else
     @success = false
